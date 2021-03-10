@@ -38,22 +38,33 @@ function seedData() {
     //if this is the first iteration
       //then the primaryPhoto property will be true
 
-      //create a random number from 0 to 99 - this will be the selected photo from module.exports normal photos array AND module.exports thumbnail photo array
+      //store a generated random house photo in a variable
+      //upload this random house photo to S3
       //create a new entry for normal size
       // const doc = new Photo({
 
       // })
       //save this entry - it is async!
       //await doc.save();
+      //store a generated thumbnail photo (corresponds to the one above) in a variable
+      //upload this random house photo to S3
       //create a new entry for thumbnail size
       //save this entry - REMEMBER, it is async!
 
     //otherwise
       //the primaryPhoto property will be false
-        //create a new entry for normal size
-        //save this entry
-        //create a new entry for thumbnail size
-        //save this entry
+        //store a generated random house photo in a variable
+      //upload this random house photo to S3
+      //create a new entry for normal size
+      // const doc = new Photo({
+
+      // })
+      //save this entry - it is async!
+      //await doc.save();
+      //store a generated thumbnail photo (corresponds to the one above) in a variable
+      //upload this random house photo to S3
+      //create a new entry for thumbnail size
+      //save this entry - REMEMBER, it is async!
 }
 
 
