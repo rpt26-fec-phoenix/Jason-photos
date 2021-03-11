@@ -8,7 +8,7 @@ const helper = require('./helpers.js')
 
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:9000/airbnb', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb://localhost/airbnb', {useNewUrlParser: true, useUnifiedTopology: true});
 
 const db = mongoose.connection;
 
@@ -19,13 +19,14 @@ db.once('open', function() {
   // we're connected!
 });
 
-//define schema for the photos service
+//define schema for the photos services
 const photoSchema = new mongoose.Schema({
+  id: Number
   propertyID : Number,
   url : String,
   text : String,
   primaryPhoto : Boolean,
-  normalSize : Boolean
+  // normalSize : Boolean
 });
 
 
@@ -35,39 +36,32 @@ const Photo = mongoose.model('Photo', photoSchema);
 
 //function to seed data into the database
 function seedData() {
+  //call the function from aws.js that will allow me to get all objects in the S3 bucket
+
+  //store this in an array
+
   //iterate from 1 to 100
     //randomize the number of photos to generate for a specific property - between 10 and 40
-    ///iterate over this solved number^^ - create that amount of entries (multiplied by 2 - one for normal and one for thumbnail)
+    ///iterate over this solved number^^ - create that amount of entries
     //if this is the first iteration
       //then the primaryPhoto property will be true
 
-      //store a generated random house photo in a variable
-      //upload this random house photo to S3
       //create a new entry for normal size
       // const doc = new Photo({
 
       // })
       //save this entry - it is async!
       //await doc.save();
-      //store a generated thumbnail photo (corresponds to the one above) in a variable
-      //upload this random house photo to S3
-      //create a new entry for thumbnail size
-      //save this entry - REMEMBER, it is async!
 
     //otherwise
       //the primaryPhoto property will be false
-        //store a generated random house photo in a variable
-      //upload this random house photo to S3
-      //create a new entry for normal size
+      //create a new entry for normal size with primaryProperty as false
       // const doc = new Photo({
 
       // })
       //save this entry - it is async!
       //await doc.save();
-      //store a generated thumbnail photo (corresponds to the one above) in a variable
-      //upload this random house photo to S3
-      //create a new entry for thumbnail size
-      //save this entry - REMEMBER, it is async!
+
 }
 
 //testing function to see if upload to S3 occurs correctly
@@ -77,17 +71,26 @@ function test() {
   //upload the normal photo to S3 - set this to a variable
   const uploadedPhoto = async (generatedPhotos) => {
     try {
-      const url = await aws.uploadNormalToS3();
+      const url = await aws.uploadNormalToS3(generatedPhotos);
       //console log the variable -> this should return the url
       console.log(url);
     } catch (err) {
       console.log(err);
     }
   };
-  //upload the thumbnail photo to s3??
 }
 
 test();
 
 
 //invoke seeding function
+
+
+
+
+
+
+      //store a generated thumbnail photo (corresponds to the one above) in a variable
+      //upload this random house photo to S3
+      //create a new entry for thumbnail size
+      //save this entry - REMEMBER, it is async!
