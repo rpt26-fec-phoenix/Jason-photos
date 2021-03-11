@@ -1,9 +1,12 @@
 //this module will contain some helper functions
 
+//import axios
+const axios = require('axios');
+
 //create randomizer for the page number
 const pageNumber = Math.floor(Math.random() * 5000);
 //helper function to generatePhoto
-function generatePhoto() {
+function generatePhotos() {
   //fetch a random photo from the houses+interior unsplash url
   axios.get(`https://api.unsplash.com/search/photos?page=${pageNumber}&query=houses-and-interior&per_page=1&orientation=landscape&client_id=${process.env.UNSPLASH_ACCESS_KEY}`)
     .then((response) => {
@@ -33,6 +36,6 @@ function generateThumbnail() {
 
 
 module.exports = {
-  generatePhoto,
+  generatePhotos,
   generateThumbnail
 }

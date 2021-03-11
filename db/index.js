@@ -8,9 +8,9 @@ const helper = require('./helpers.js')
 
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:7676/airbnb', {useNewUrlParser: true});
+mongoose.connect('mongodb://localhost:9000/airbnb', {useNewUrlParser: true, useUnifiedTopology: true});
 
-const db = mongoose.connection();
+const db = mongoose.connection;
 
 //turn the db connection on
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -30,7 +30,7 @@ const photoSchema = new mongoose.Schema({
 
 
 //compile the schema into a model
-const photo = mongoose.model('Photo', listingSchema);
+const Photo = mongoose.model('Photo', photoSchema);
 
 
 //function to seed data into the database
@@ -73,11 +73,21 @@ function seedData() {
 //testing function to see if upload to S3 occurs correctly
 function test() {
   //generate the photo
-
-  //upload the photo to S3 - set this to a variable
-
-  //console log the variable -> this should return the url
+  var generatedPhotos = helper.generatePhotos();
+  //upload the normal photo to S3 - set this to a variable
+  const uploadedPhoto = async (generatedPhotos) => {
+    try {
+      const url = await aws.uploadNormalToS3();
+      //console log the variable -> this should return the url
+      console.log(url);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  //upload the thumbnail photo to s3??
 }
+
+test();
 
 
 //invoke seeding function
