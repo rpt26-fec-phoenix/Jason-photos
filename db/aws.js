@@ -63,6 +63,7 @@ const getALlObjects = async () => {
       Bucket: process.env.BUCKET_NAME
     }).promise();
     console.log(response);
+    return response;
     //TODO = return the response
   } catch (e) {
     console.log('Error', e);

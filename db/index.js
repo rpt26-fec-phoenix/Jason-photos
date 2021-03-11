@@ -21,7 +21,7 @@ db.once('open', function() {
 
 //define schema for the photos services
 const photoSchema = new mongoose.Schema({
-  id: Number
+  id: Number,
   propertyID : Number,
   url : String,
   text : String,
@@ -35,20 +35,19 @@ const Photo = mongoose.model('Photo', photoSchema);
 
 
 //function to seed data into the database
-function seedData() {
+async function seedData() {
   //call the function from aws.js that will allow me to get all objects in the S3 bucket
-
-  //store this in an array
-
+    const photoObjects = await aws.getAllObjects();
+    console.log(photoObjects);
   //iterate from 1 to 100
     //randomize the number of photos to generate for a specific property - between 10 and 40
-    ///iterate over this solved number^^ - create that amount of entries
+    //iterate over this solved number^^ - create that amount of entries
     //if this is the first iteration
       //then the primaryPhoto property will be true
 
       //create a new entry for normal size
       // const doc = new Photo({
-
+          // id: i
       // })
       //save this entry - it is async!
       //await doc.save();
@@ -80,10 +79,12 @@ function test() {
   };
 }
 
-test();
-
+// test();
 
 //invoke seeding function
+seedData();
+
+
 
 
 

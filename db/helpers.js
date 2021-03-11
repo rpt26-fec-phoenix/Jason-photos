@@ -27,6 +27,7 @@ function generatePhotos() {
 };
 
 //helper function to resize photo to thumbnail
+/* WILL NOT USE */
 function generateThumbnail() {
 
 };
