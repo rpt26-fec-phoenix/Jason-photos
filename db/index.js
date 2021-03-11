@@ -1,6 +1,9 @@
 //import faker
 const faker = require('faker');
 
+//import aws.js and helpers.js
+const aws = require('./aws.js');
+const helper = require('./helpers.js')
 //connection to the Mongoose database
 
 const mongoose = require('mongoose');
@@ -22,7 +25,7 @@ const photoSchema = new mongoose.Schema({
   url : String,
   text : String,
   primaryPhoto : Boolean,
-  largeSize : Boolean
+  normalSize : Boolean
 });
 
 
@@ -67,7 +70,14 @@ function seedData() {
       //save this entry - REMEMBER, it is async!
 }
 
+//testing function to see if upload to S3 occurs correctly
+function test() {
+  //generate the photo
 
+  //upload the photo to S3 - set this to a variable
+
+  //console log the variable -> this should return the url
+}
 
 
 //invoke seeding function
