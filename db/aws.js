@@ -73,22 +73,3 @@ const getAllObjects = async () => {
 module.exports = {
   getAllObjects
 }
-
-
-
-
-//create sample array
-var testArray = [
-  'images.unsplash.com/photo-1560923983-79bfb3d29b77?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMTM5MjJ8MHwxfHNlYXJjaHwzMTI2fHxob3VzZXMtYW5kLWludGVyaW9yfGVufDB8MHx8fDE2MTU0NDc5NDU&ixlib=rb-1.2.1&q=80&w=108',
-  'images.unsplash.com/photo-1560923983-79bfb3d29b77?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMTM5MjJ8MHwxfHNlYXJjaHwzMTI2fHxob3VzZXMtYW5kLWludGVyaW9yfGVufDB8MHx8fDE2MTU0NDc5NDU&ixlib=rb-1.2.1&q=80&w=200'
-];
-
-
-//Testing functionality:
-
-//upload the normal photo to S3
-// uploadNormalToS3(testArray);
-//upload the thumbnail to S3
-//uploadThumbnailToS3(testArray);
-
-// getAllObjects();
