@@ -57,12 +57,11 @@ const uploadThumbnailToS3 = async (images) => {
 
 
 //function to get all Objects in my S3 bucket
-const getALlObjects = async () => {
+const getAllObjects = async () => {
   try {
     const response = await s3.listObjectsV2({
       Bucket: process.env.BUCKET_NAME
     }).promise();
-    console.log(response);
     return response;
     //TODO = return the response
   } catch (e) {
@@ -71,7 +70,9 @@ const getALlObjects = async () => {
 };
 
 
-
+module.exports = {
+  getAllObjects
+}
 
 
 
@@ -90,4 +91,4 @@ var testArray = [
 //upload the thumbnail to S3
 //uploadThumbnailToS3(testArray);
 
-getALlObjects();
+// getAllObjects();
