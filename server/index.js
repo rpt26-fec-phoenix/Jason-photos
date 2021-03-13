@@ -26,7 +26,7 @@ app.get('/photos/:propertyID', (req, res) => {
 //and a route to retrieve the primary photo url for a specific property id
 app.get('/photos/:propertyID/primaryPhoto', (req, res) => {
   //retrieve the document that matches the propertyID passed in as well as a primaryPhoto bool val of true
-  photos.find({ propertyID: req.params.propertyID}, function (err, doc) {
+  photos.find({ propertyID: req.params.propertyID, primaryPhoto: true}, function (err, doc) {
     //err check
     if (err) {
       console.log('Error with retrieving photo primary url');
@@ -34,6 +34,7 @@ app.get('/photos/:propertyID/primaryPhoto', (req, res) => {
     } else {
       //find the url from the retrieved doc
       console.log(doc);
+      res.send(doc[0].url);
     }
   });
 });
