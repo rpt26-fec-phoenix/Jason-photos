@@ -35,6 +35,7 @@ const photoSchema = new mongoose.Schema({
 //compile the schema into a model
 const Photo = mongoose.model('Photo', photoSchema);
 
+module.exports = mongoose.model('Photo', photoSchema);
 
 //function to seed data into the database
 async function seedData() {
