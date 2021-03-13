@@ -8,6 +8,9 @@ const port = 7676;
 
 const photos = require('../db/index.js');
 
+//serve up initial html page
+app.use(express.static(__dirname + '/../client/dist'));
+
 //will serve 2 routes - one to retrieve all photo data for a specific property id
 app.get('/photos/:propertyID', (req, res) => {
   //retrieve all documents with the property id as that passed in
