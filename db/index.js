@@ -35,8 +35,6 @@ const photoSchema = new mongoose.Schema({
 //compile the schema into a model
 const Photo = mongoose.model('Photo', photoSchema);
 
-module.exports = mongoose.model('Photo', photoSchema);
-
 //function to seed data into the database
 async function seedData() {
   try {
@@ -56,20 +54,20 @@ async function seedData() {
           //then the primaryPhoto property will be false
           primary = false;
         }
-          //randomly generate a num for the index we are pulling from (based on the length of the photo array)
-          var indexNum = Math.floor(Math.random() * photoObjects.Contents.length);
-          //create var for the key from the randomly generated index
-          var key = photoObjects.Contents[indexNum].Key;
-          //create a new entry for normal size
-          const doc = new Photo({
-            propertyID: i,
-            photoOrderId: j,
-            url: `https://${process.env.BUCKET_NAME}.s3.us-west-1.amazonaws.com/${key}`,
-            text: faker.lorem.sentence(),
-            primaryPhoto: primary
-          });
-          //save this entry - it is async!
-          await doc.save();
+        //randomly generate a num for the index we are pulling from (based on the length of the photo array)
+        var indexNum = Math.floor(Math.random() * photoObjects.Contents.length);
+        //create var for the key from the randomly generated index
+        var key = photoObjects.Contents[indexNum].Key;
+        //create a new entry for normal size
+        const doc = new Photo({
+          propertyID: i,
+          photoOrderId: j,
+          url: `https://${process.env.BUCKET_NAME}.s3.us-west-1.amazonaws.com/${key}`,
+          text: faker.lorem.sentence(),
+          primaryPhoto: primary
+        });
+        //save this entry - it is async!
+        await doc.save();
       }
     }
     //console.log message once all done with seeding
@@ -79,6 +77,43 @@ async function seedData() {
   }
 };
 
+//function to retrieve photos for a certain property
+const retrievePhotoObjs = function (id) {
+  //retrieve all documents with the property id as that passed in
+  return new Promise((resolve, reject) => {
+    Photo.find({ propertyID: id }, function (err, docs) {
+      //err check
+      if (err) {
+        console.log('Error with retrieving photos');
+        reject(err);
+      } else {
+        resolve(docs);
+      }
+    });
+  });
+};
+
+//function to retrieve the primary photo url for a specific property id
+const retrievePrimary = function (id) {
+  //retrieve the document that matches the propertyID passed in as well as a primaryPhoto bool val of true
+  return new Promise((resolve, reject) => {
+    Photo.find({ propertyID: id, primaryPhoto: true }, function (err, doc) {
+      //err check
+      if (err) {
+        console.log('Error with retrieving photo primary url');
+        reject(err);
+      } else {
+        //find the url from the retrieved doc
+        resolve(doc[0].url);
+      }
+    });
+  })
+};
 
 //invoke seeding function
 //seedData();
+
+module.exports = {
+  retrievePhotoObjs,
+  retrievePrimary
+}
