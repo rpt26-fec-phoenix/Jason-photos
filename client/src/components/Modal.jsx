@@ -1,4 +1,4 @@
-var Modal = (props) => {
+const Modal = (props) => {
   return (
     <div>
       In the modal!

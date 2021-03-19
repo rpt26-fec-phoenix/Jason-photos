@@ -7,11 +7,67 @@ import axios from 'axios';
 
 
 class App extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
+    //set a starting state so things will render
     this.state = {
       view: 'Homepage',
-      photos: []
+      photos: [
+        {
+          photoOrderId: 0,
+          primaryPhoto: true,
+          propertyID: 1,
+          text: "Eos eius harum occaecati fuga fuga.",
+          url: "https://testairbnbphotos.s3.us-west-1.amazonaws.com/photo40.jpg",
+          __v: 0,
+          _id: "604b1ee8c13b395add2333e3"
+        },
+        {
+          photoOrderId: 0,
+          primaryPhoto: true,
+          propertyID: 1,
+          text: "Eos eius harum occaecati fuga fuga.",
+          url: "https://testairbnbphotos.s3.us-west-1.amazonaws.com/photo40.jpg",
+          __v: 0,
+          _id: "604b1ee8c13b395add2333e3"
+        },
+        {
+          photoOrderId: 0,
+          primaryPhoto: true,
+          propertyID: 1,
+          text: "Eos eius harum occaecati fuga fuga.",
+          url: "https://testairbnbphotos.s3.us-west-1.amazonaws.com/photo40.jpg",
+          __v: 0,
+          _id: "604b1ee8c13b395add2333e3"
+        },
+        {
+          photoOrderId: 0,
+          primaryPhoto: true,
+          propertyID: 1,
+          text: "Eos eius harum occaecati fuga fuga.",
+          url: "https://testairbnbphotos.s3.us-west-1.amazonaws.com/photo40.jpg",
+          __v: 0,
+          _id: "604b1ee8c13b395add2333e3"
+        },
+        {
+          photoOrderId: 0,
+          primaryPhoto: true,
+          propertyID: 1,
+          text: "Eos eius harum occaecati fuga fuga.",
+          url: "https://testairbnbphotos.s3.us-west-1.amazonaws.com/photo40.jpg",
+          __v: 0,
+          _id: "604b1ee8c13b395add2333e3"
+        },
+        {
+          photoOrderId: 0,
+          primaryPhoto: true,
+          propertyID: 1,
+          text: "Eos eius harum occaecati fuga fuga.",
+          url: "https://testairbnbphotos.s3.us-west-1.amazonaws.com/photo40.jpg",
+          __v: 0,
+          _id: "604b1ee8c13b395add2333e3"
+        }
+      ]
     };
   }
 
@@ -30,23 +86,31 @@ class App extends React.Component {
     //get the propertyID from this url
     // const propID = url[]
     //send GET to /photos/${propID}
-    axios.get(`/photos/5`)
-    .then((result) => {
-      console.log('FETCH RESULT', result.data);
-      this.setState({
-        photos: result.data
+    axios.get(`/photos/1`)
+      .then((result) => {
+        console.log('FETCH RESULT', result.data);
+        this.setState({
+          photos: result.data
+        });
+      })
+      .catch((err) => {
+        console.log(err);
       });
-    })
   };
 
   render() {
-    //if the view is Homepage, then return the Homepage view
-    if (this.state.view === 'Homepage') {
-      return <Homepage photos={this.state.photos}/>
-    }
-    //otherwise, return the Modal view
-    {return <Modal photos={this.state.photos}/>}
-  }
+    return (
+      <div className='main'>
+        {/* if the view is Homepage, then return the Homepage view */}
+        {this.state.view === 'Homepage' ?
+          <Homepage photos={this.state.photos} /> :
+          // otherwise, return the Modal view
+          <       Modal photos={this.state.photos} />
+        }
+      </div>
+    )
+
+  };
 
   //function to change the view
   changeView() {
@@ -56,4 +120,4 @@ class App extends React.Component {
 };
 
 
-ReactDOM.render(<App/>, document.getElementById('Photos'));
+ReactDOM.render(<App />, document.getElementById('Photos'));

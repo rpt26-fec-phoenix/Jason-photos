@@ -1,15 +1,26 @@
+import React from 'react';
+
 import LargePhoto from './LargePhoto.jsx';
-import SmallPhoto from './SmallPhoto.jsx';
+import SmallPhotos from './SmallPhotos.jsx';
 
 
-var Homepage = (props) => {
+const Homepage = (props) => {
+  //create an array of 4 photos to create smaller photos
+  const photoArray = [];
+  for (let i = 1; i < 5; i++) {
+    photoArray.push(props.photos[i]);
+  }
+
   return (
     <div>
       Hey there dudes
-      {console.log('HOMEPAGE', props)}
-    <LargePhoto photo={props.photos[0]}/>
-    {//map over the props from index 1 to 4 and create a small photo for each
-    }
+      <span>
+        <LargePhoto photo={props.photos[0]} />
+      </span>
+      <span>
+        <SmallPhotos photos={photoArray} />
+      </span>
+
     </div>
   );
 };
