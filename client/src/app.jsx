@@ -1,7 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Homepage from './components/Homepage.jsx';
+import Modal from './components/Modal.jsx';
 
-class App extends React.component() {
+import axios from 'axios';
+
+
+class App extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
@@ -10,9 +15,28 @@ class App extends React.component() {
     };
   }
 
-  //as soon as the component mounts, send a GET request for the propID data
+  //as soon as the component mounts, call the getPhotos function
   componentDidMount() {
-    //send GET to /photos/:propertyID
+    console.log('Mounted');
+    this.getPhotos();
+  };
+
+
+  //function that will send a GET request for the propID data and populate the state
+  getPhotos() {
+    //get the url of the webpage
+    const url = window.location.href;
+    console.log('URL', url);
+    //get the propertyID from this url
+    // const propID = url[]
+    //send GET to /photos/${propID}
+    axios.get(`/photos/5`)
+    .then((result) => {
+      console.log('FETCH RESULT', result.data);
+      this.setState({
+        photos: result.data
+      });
+    })
   };
 
   render() {
