@@ -1,45 +1,34 @@
 //module for my express server
-
+const db = require('../db/index.js');
 const express = require('express');
-
 const app = express();
-
 const port = 7676;
-
-const photos = require('../db/index.js');
 
 //serve up initial html page
 app.use(express.static(__dirname + '/../client/dist'));
 
 //will serve 2 routes - one to retrieve all photo data for a specific property id
 app.get('/photos/:propertyID', (req, res) => {
-  //retrieve all documents with the property id as that passed in
-  photos.find({ propertyID: req.params.propertyID}, function (err, docs) {
-    //err check
-    if (err) {
-      console.log('Error with retrieving photos');
-      res.send(500);
-    } else {
-      res.send(docs);
-    }
-  });
+  //call the db retrievePhotoObjs function and pass in req and res
+  db.retrievePhotoObjs(req.params.propertyID)
+    .then((results) => {
+      res.send(results);
+    })
+    .catch((err) => {
+      res.status(500);
+    })
 });
 
 
 //and a route to retrieve the primary photo url for a specific property id
 app.get('/photos/:propertyID/primaryPhoto', (req, res) => {
-  //retrieve the document that matches the propertyID passed in as well as a primaryPhoto bool val of true
-  photos.find({ propertyID: req.params.propertyID, primaryPhoto: true}, function (err, doc) {
-    //err check
-    if (err) {
-      console.log('Error with retrieving photo primary url');
-      res.send(500);
-    } else {
-      //find the url from the retrieved doc
-      console.log(doc);
-      res.send(doc[0].url);
-    }
-  });
+  db.retrievePrimary(req.params.propertyID)
+    .then((url) => {
+      res.send(url)
+    })
+    .catch((err) => {
+      res.status(500);
+    })
 });
 
 
