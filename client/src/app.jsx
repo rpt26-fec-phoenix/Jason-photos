@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Homepage from './components/Homepage.jsx';
-import Modal from './components/Modal.jsx';
+import Modal from './components/Carousel.jsx';
 
 import axios from 'axios';
 
@@ -86,7 +86,7 @@ class App extends React.Component {
     //get the propertyID from this url
     // const propID = url[]
     //send GET to /photos/${propID}
-    axios.get(`/photos/1`)
+    axios.get(`/photos/10`)
       .then((result) => {
         console.log('FETCH RESULT', result.data);
         this.setState({
@@ -105,7 +105,7 @@ class App extends React.Component {
         {this.state.view === 'Homepage' ?
           <Homepage photos={this.state.photos} /> :
           // otherwise, return the Modal view
-          <       Modal photos={this.state.photos} />
+          <       Carousel photos={this.state.photos} />
         }
       </div>
     )
