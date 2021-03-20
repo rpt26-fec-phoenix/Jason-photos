@@ -2,7 +2,7 @@
 const db = require('../db/index.js');
 const express = require('express');
 const app = express();
-const port = 7676;
+const port = 3002;
 
 //serve up initial html page
 app.use(express.static(__dirname + '/../client/dist'));
