@@ -1,5 +1,6 @@
 //module for my express server
 const db = require('../db/index.js');
+const path = require('path');
 const express = require('express');
 const app = express();
 const port = 3002;
@@ -30,6 +31,13 @@ app.get('/photos/:propertyID/primaryPhoto', (req, res) => {
       res.status(500);
     })
 });
+
+  //add one final route to take care of any other endpoints - important to allow sending back of the index.html
+  app.get('*', (req, res) => {
+    //deliver index.html --> this will deliver the bundle too
+    const currPath = path.resolve(__dirname + '/../client/dist/index.html')
+    res.sendFile(currPath);
+    });
 
 
 app.listen(port, () => {

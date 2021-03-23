@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Homepage from './components/Homepage.jsx';
-import Modal from './components/Carousel.jsx';
+import Carousel from './components/Carousel.jsx';
 
 import axios from 'axios';
 
@@ -84,9 +84,10 @@ class App extends React.Component {
     const url = window.location.href;
     console.log('URL', url);
     //get the propertyID from this url
+    let propID = url.split('/')[3];
     // const propID = url[]
     //send GET to /photos/${propID}
-    axios.get(`/photos/10`)
+    axios.get(`/photos/${propID}`)
       .then((result) => {
         console.log('FETCH RESULT', result.data);
         this.setState({
