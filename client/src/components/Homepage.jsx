@@ -1,13 +1,29 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const PrimaryPhoto = styled.img`
+  width: 75%;
+  border: 2px solid #333;
+`;
+
+const Wrapper = styled.div`
+  width: 50%;
+  border: 2px solid #333;
+  border-radius: 4px;
+  margin-bottom: 25px;
+  padding-right: 10px;
+  /*overflow: hidden; */
+`;
 
 
 const Homepage = (props) => {
 
   return (
-    <div>
+    <Wrapper>
       Hey there dudes
       <span>
-        <img src={props.photos[0].url} alt={'large photo'}></img>
+        <PrimaryPhoto src={props.photos[0].url} alt={'large photo'}></PrimaryPhoto>
+        {/* <img src={props.photos[0].url} alt={'large photo'}></img> */}
       </span>
       <span>
         <div>
@@ -25,7 +41,7 @@ const Homepage = (props) => {
           </div>
         </div>
       </span>
-    </div>
+    </Wrapper>
   );
 };
 
