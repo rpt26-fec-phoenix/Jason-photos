@@ -4,11 +4,15 @@ import styled from 'styled-components';
 const PrimaryPhoto = styled.img`
   width: 564px;
   border: 2px solid #333;
+  border-radius: 8px;
+  margin: 6px;
 `;
 
 const SmallerPhoto = styled.img`
+  display: border-box;
   width: 264px;
   height: 150px;
+  padding: 6px;
 `;
 
 const Wrapper = styled.div`
@@ -18,6 +22,10 @@ const Wrapper = styled.div`
   margin-bottom: 25px;
   padding-right: 10px;
   /*overflow: hidden; */
+
+  ${PrimaryPhoto}:hover {
+    opacity: 50%;
+  }
 `;
 
 
@@ -25,10 +33,7 @@ const Homepage = (props) => {
 
   return (
     <Wrapper>
-      <span>
         <PrimaryPhoto src={props.photos[0].url} alt={'large photo'}></PrimaryPhoto>
-      </span>
-      <span>
         <div>
           <div>
             <span>
@@ -43,7 +48,6 @@ const Homepage = (props) => {
             </span>
           </div>
         </div>
-      </span>
     </Wrapper>
   );
 };
