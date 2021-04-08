@@ -25,3 +25,6 @@ build/
 
 # env file
 .env
+
+# pem file
+*.pem
