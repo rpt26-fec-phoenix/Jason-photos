@@ -110,10 +110,9 @@ const retrievePrimary = function (id) {
   })
 };
 
-//invoke seeding function
-//seedData();
 
 module.exports = {
+  seedData,
   retrievePhotoObjs,
   retrievePrimary
 }
