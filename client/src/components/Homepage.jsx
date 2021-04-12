@@ -47,22 +47,22 @@ const Homepage = (props) => {
 
   return (
     <Wrapper>
-      <PrimaryPhoto src={props.photos[0].url} alt={'large photo'}></PrimaryPhoto>
+      <PrimaryPhoto src={props.photos[0].url} alt={'large photo'} onClick={props.changeView}></PrimaryPhoto>
       <div>
         <span>
           <div>
-            <SmallerPhoto src={props.photos[1].url} alt={'small photo1'}></SmallerPhoto>
+            <SmallerPhoto src={props.photos[1].url} alt={'small photo1'} onClick={props.changeView}></SmallerPhoto>
           </div>
           <div>
-            <SmallerPhoto src={props.photos[3].url} alt={'small photo3'}></SmallerPhoto>
+            <SmallerPhoto src={props.photos[3].url} alt={'small photo3'} onClick={props.changeView}></SmallerPhoto>
           </div>
         </span>
         <span>
           <div>
-            <SmallerPhoto src={props.photos[2].url} alt={'small photo2'}></SmallerPhoto>
+            <SmallerPhoto src={props.photos[2].url} alt={'small photo2'} onClick={props.changeView}></SmallerPhoto>
           </div>
           <div>
-            <SmallerPhoto src={props.photos[4].url} alt={'small photo4'}></SmallerPhoto>
+            <SmallerPhoto src={props.photos[4].url} alt={'small photo4'} onClick={props.changeView}></SmallerPhoto>
           </div>
         </span>
       </div>
