@@ -69,6 +69,8 @@ class App extends React.Component {
         }
       ]
     };
+    //bind the changeView function to this context
+    this.changeView = this.changeView.bind(this);
   }
 
   //as soon as the component mounts, call the getPhotos function
@@ -99,24 +101,41 @@ class App extends React.Component {
       });
   };
 
+
+
+  //function to change the view
+  changeView() {
+    console.log('changing the view');
+    //when this function is called, change the view in the state
+    //if the state is 'Homepage'
+    if (this.state.view === 'Homepage') {
+      //then set it to Carousel
+      this.setState({
+        view: 'Carousel'
+      });
+      //else if the state is 'Carousel'
+    } else if (this.state.view === 'Carousel') {
+      //then set it to 'Homepage
+      this.setState({
+        view: 'Homepage'
+      });
+    }
+  };
+
+
   render() {
     return (
       <div className='main'>
         {/* if the view is Homepage, then return the Homepage view */}
         {this.state.view === 'Homepage' ?
-          <Homepage photos={this.state.photos} /> :
+          <Homepage photos={this.state.photos} changeView={this.changeView}/> :
           // otherwise, return the Modal view
-          <       Carousel photos={this.state.photos} />
+          <Carousel photos={this.state.photos} changeView={this.changeView}/>
         }
       </div>
     )
-
   };
 
-  //function to change the view
-  changeView() {
-
-  };
 
 };
 
