@@ -67,10 +67,14 @@ class App extends React.Component {
           __v: 0,
           _id: "604b1ee8c13b395add2333e3"
         }
-      ]
+      ],
+      modalCurrentPhoto: 0
     };
     //bind the changeView function to this context
     this.changeView = this.changeView.bind(this);
+
+    //bind the changeModalPic function to this context
+    this.changeModalPic = this.changeModalPic.bind(this);
   }
 
   //as soon as the component mounts, call the getPhotos function
@@ -122,15 +126,24 @@ class App extends React.Component {
     }
   };
 
+  //function to change the current pic in the modal
+  changeModalPic(clickedPhoto) {
+    console.log('changing pic', clickedPhoto);
+    //set the state of the current photo to the photo that was clicked
+    this.setState({
+      modalCurrentPhoto: clickedPhoto
+    });
+  }
+
 
   render() {
     return (
       <div className='main'>
         {/* if the view is Homepage, then return the Homepage view */}
         {this.state.view === 'Homepage' ?
-          <Homepage photos={this.state.photos} changeView={this.changeView}/> :
+          <Homepage photos={this.state.photos} changeView={this.changeView} changeModalPic={this.changeModalPic}/> :
           // otherwise, return the Modal view
-          <Carousel photos={this.state.photos} changeView={this.changeView}/>
+          <Carousel photos={this.state.photos} changeView={this.changeView} changeModalPic={this.changeModalPic} currentPic={this.state.modalCurrentPhoto}/>
         }
       </div>
     )

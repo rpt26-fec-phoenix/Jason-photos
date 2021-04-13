@@ -26,20 +26,19 @@ const SmallerPhoto = styled.img`
 const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
-  // grid-template-columns: 80% 30%;
   margin: auto;
-  // border: 2px solid #333;
-  // border-radius: 4px;
   margin-bottom: 25px;
-  padding-right: 10px;
-  /*overflow: hidden; */
+  padding-left: 10px;
+  padding-right: 40px;
+  margin-left: 10%;
+  // margin-right: 10%;
 
   // height: “100%“;
   // padding-top: “48px”;
   // padding-left: “40px”;
   // padding-right: “40px”;
-  // max-width: “1280px”;
-  // min-width: “744px”;
+  max-width: 1280px;
+  min-width: 744px;
   // margin-left: “20%“;
   // margin-right: “10%”;
 
@@ -60,19 +59,38 @@ const Homepage = (props) => {
   return (
     <Wrapper>
       <div>
-        <PrimaryPhoto src={props.photos[0].url} alt={'large photo'} onClick={props.changeView}></PrimaryPhoto>
+        <PrimaryPhoto src={props.photos[0].url} alt={'large photo'} onClick= {() =>{props.changeView();
+          props.changeModalPic(0);
+          }
+          }></PrimaryPhoto>
       </div>
       <div>
         <div>
           <span>
-            <SmallerPhoto src={props.photos[1].url} alt={'small photo1'} onClick={props.changeView}></SmallerPhoto>
-            <SmallerPhoto src={props.photos[2].url} alt={'small photo2'} onClick={props.changeView}></SmallerPhoto>
+            <SmallerPhoto src={props.photos[1].url} alt={'small photo1'} onClick={
+              () => {props.changeView();
+                props.changeModalPic(1);
+              }
+              }></SmallerPhoto>
+            <SmallerPhoto src={props.photos[2].url} alt={'small photo2'} onClick={
+              () => {props.changeView();
+                props.changeModalPic(2);
+              }
+              }></SmallerPhoto>
           </span>
         </div>
         <div>
           <span>
-            <SmallerPhoto src={props.photos[3].url} alt={'small photo3'} onClick={props.changeView}></SmallerPhoto>
-            <SmallerPhoto src={props.photos[4].url} alt={'small photo4'} onClick={props.changeView}></SmallerPhoto>
+            <SmallerPhoto src={props.photos[3].url} alt={'small photo3'} onClick={
+              () => {props.changeView();
+                props.changeModalPic(3);
+              }
+              }></SmallerPhoto>
+            <SmallerPhoto src={props.photos[4].url} alt={'small photo4'} onClick={
+              () => {props.changeView();
+                props.changeModalPic(4);
+              }
+              }></SmallerPhoto>
           </span>
         </div>
       </div>
