@@ -31,6 +31,23 @@ const StyledPhoto = styled.img`
 
 
 const Carousel = (props) => {
+  //create leftButtonTrue var
+  var leftButtonTrue;
+  //if the currentPic prop is not 0, then have a left button
+  if (props.currentPic !== 0) {
+    leftButtonTrue = true;
+  } else {
+    leftButtonTrue = false;
+  }
+
+  //create rightButtonTrue var
+  var rightButtonTrue;
+  //if the currentPic prop is not the last photo, then have a right button
+  if (props.currentPic !== props.photos.length - 1) {
+    rightButtonTrue = true;
+  } else {
+    rightButtonTrue = false;
+  }
   return (
     <Wrapper>
       <div>
@@ -40,9 +57,11 @@ const Carousel = (props) => {
       </div>
       <div>
         {/*conditional rendering for left button */}
+        {leftButtonTrue ? <button onClick={props.changeModalPicLeft}>Left</button> : null}
         {/*Photo:*/}
         <StyledPhoto src={props.photos[props.currentPic].url} alt={`styledPhoto${props.currentPic}`} />
         {/*conditional rendering for right button */}
+        {rightButtonTrue ? <button onClick={props.changeModalPicRight}>Right</button> : null}
       </div>
 
     </Wrapper>
@@ -50,6 +69,8 @@ const Carousel = (props) => {
 };
 
 export default Carousel;
+
+
 
 
 

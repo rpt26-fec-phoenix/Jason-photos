@@ -60,7 +60,7 @@ const Homepage = (props) => {
     <Wrapper>
       <div>
         <PrimaryPhoto src={props.photos[0].url} alt={'large photo'} onClick= {() =>{props.changeView();
-          props.changeModalPic(0);
+          props.changeModalPicFromHomepage(0);
           }
           }></PrimaryPhoto>
       </div>
@@ -69,12 +69,12 @@ const Homepage = (props) => {
           <span>
             <SmallerPhoto src={props.photos[1].url} alt={'small photo1'} onClick={
               () => {props.changeView();
-                props.changeModalPic(1);
+                props.changeModalPicFromHomepage(1);
               }
               }></SmallerPhoto>
             <SmallerPhoto src={props.photos[2].url} alt={'small photo2'} onClick={
               () => {props.changeView();
-                props.changeModalPic(2);
+                props.changeModalPicFromHomepage(2);
               }
               }></SmallerPhoto>
           </span>
@@ -83,12 +83,12 @@ const Homepage = (props) => {
           <span>
             <SmallerPhoto src={props.photos[3].url} alt={'small photo3'} onClick={
               () => {props.changeView();
-                props.changeModalPic(3);
+                props.changeModalPicFromHomepage(3);
               }
               }></SmallerPhoto>
             <SmallerPhoto src={props.photos[4].url} alt={'small photo4'} onClick={
               () => {props.changeView();
-                props.changeModalPic(4);
+                props.changeModalPicFromHomepage(4);
               }
               }></SmallerPhoto>
           </span>
