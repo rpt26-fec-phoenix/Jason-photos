@@ -14,7 +14,7 @@ const PrimaryPhoto = styled.img`
 `;
 
 const SmallerPhoto = styled.img`
-  display: border-box;
+  // display: border-box;
   width: 264px;
   height: 190px;
   padding: 6px;
@@ -24,8 +24,9 @@ const SmallerPhoto = styled.img`
 `;
 
 const Wrapper = styled.div`
-  display: grid;
-  grid-template-columns: 80% 30%;
+  display: flex;
+  flex-direction: row;
+  // grid-template-columns: 80% 30%;
   margin: auto;
   // border: 2px solid #333;
   // border-radius: 4px;
@@ -58,21 +59,23 @@ const Homepage = (props) => {
 
   return (
     <Wrapper>
-      <span>
+      <div>
         <PrimaryPhoto src={props.photos[0].url} alt={'large photo'} onClick={props.changeView}></PrimaryPhoto>
-          <div>
+      </div>
+      <div>
+        <div>
           <span>
             <SmallerPhoto src={props.photos[1].url} alt={'small photo1'} onClick={props.changeView}></SmallerPhoto>
             <SmallerPhoto src={props.photos[2].url} alt={'small photo2'} onClick={props.changeView}></SmallerPhoto>
           </span>
-          </div>
-          <div>
+        </div>
+        <div>
           <span>
             <SmallerPhoto src={props.photos[3].url} alt={'small photo3'} onClick={props.changeView}></SmallerPhoto>
             <SmallerPhoto src={props.photos[4].url} alt={'small photo4'} onClick={props.changeView}></SmallerPhoto>
           </span>
-          </div>
-      </span>
+        </div>
+      </div>
     </Wrapper>
   );
 };
