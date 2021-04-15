@@ -1,34 +1,52 @@
 import React from 'react';
 import styled from 'styled-components';
 
+//import Exit icon
+import ExitIcon from './ExitIcon.jsx';
+
 //import share icon
+import ShareIcon from './ShareIcon.jsx';
 
 //import save icon
 import SaveIcon from './Saveicon.jsx';
 
 //create wrapper div
 const Wrapper = styled.div`
-  background-color: black;
+  // background-color: black;
   background-size: 100%;
-  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
-  height: 100%;
+  height: 500%;
   width: 100%;
-  // padding-top: “48px”;
-  // padding-left: “40px”;
-  // padding-right: “40px”;
-  // max-width: “1280px”;
-  // min-width: “744px”;
-  // margin-left: “20%“;
-  // margin-right: “10%”;
+  // font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
 `;
 
+//create top level
 
 //create styled component for photo
 const StyledPhoto = styled.img`
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  // flex-direction: row;
   width: 50%;
   padding: 4px;
+  overflow: hidden;
 `;
 
+//create styled component for left button
+const LeftButton = styled.button`
+  position: fixed;
+`;
+
+//create styled component for right button
+const RightButton = styled.button`
+
+`;
+
+//create styled component for picture text
+const PicText = styled.p`
+  color: black;
+  text-align: center;
+`;
 
 const Carousel = (props) => {
   //create leftButtonTrue var
@@ -51,9 +69,11 @@ const Carousel = (props) => {
   return (
     <Wrapper>
       <div>
-        <button onClick={props.changeView}> X Close </button>
-        {/* <SaveIcon /> */}
-        {/*TODO SHARE ICON */}
+        <span>
+            <button onClick={props.changeView}> <ExitIcon /> Close </button>
+          <ShareIcon />
+          <SaveIcon />
+        </span>
       </div>
       <div>
         {/*conditional rendering for left button */}
@@ -62,6 +82,10 @@ const Carousel = (props) => {
         <StyledPhoto src={props.photos[props.currentPic].url} alt={`styledPhoto${props.currentPic}`} />
         {/*conditional rendering for right button */}
         {rightButtonTrue ? <button onClick={props.changeModalPicRight}>Right</button> : null}
+      </div>
+      <div>
+        {/*div for the text for each photo*/}
+        <PicText>{props.photos[props.currentPic].text}</PicText>
       </div>
 
     </Wrapper>

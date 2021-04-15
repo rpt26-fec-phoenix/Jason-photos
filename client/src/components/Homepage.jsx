@@ -17,10 +17,8 @@ const SmallerPhoto = styled.img`
   // display: border-box;
   width: 264px;
   height: 190px;
-  padding: 6px;
+  padding: 4px;
   border-radius: 12px;
-  padding-bottom: 4px;
-  padding-top: 4px;
 `;
 
 const Wrapper = styled.div`
