@@ -10,36 +10,35 @@ import ShareIcon from './ShareIcon.jsx';
 //import save icon
 import SaveIcon from './Saveicon.jsx';
 
+//import LeftButton icon
+import LeftButton from './LeftButton.jsx';
+
+//import RightButton icon
+import RightButton from './RightButton.jsx';
+
 //create wrapper div
 const Wrapper = styled.div`
-  // background-color: black;
+  background: black;
   background-size: 100%;
-  height: 500%;
+  height: 100%;
   width: 100%;
   // font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
 `;
-
-//create top level
 
 //create styled component for photo
 const StyledPhoto = styled.img`
   display: block;
   margin-left: auto;
   margin-right: auto;
-  // flex-direction: row;
+  position: absolute;
+  top: 50%;
+  left: 50%;
   width: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 500 px;
+  max-height: 400px;
   padding: 4px;
   overflow: hidden;
-`;
-
-//create styled component for left button
-const LeftButton = styled.button`
-  position: fixed;
-`;
-
-//create styled component for right button
-const RightButton = styled.button`
-
 `;
 
 //create styled component for picture text
@@ -70,18 +69,18 @@ const Carousel = (props) => {
     <Wrapper>
       <div>
         <span>
-            <button onClick={props.changeView}> <ExitIcon /> Close </button>
+          <button onClick={props.changeView}> <ExitIcon /> Close </button>
           <ShareIcon />
           <SaveIcon />
         </span>
       </div>
       <div>
         {/*conditional rendering for left button */}
-        {leftButtonTrue ? <button onClick={props.changeModalPicLeft}>Left</button> : null}
+        {leftButtonTrue ? <LeftButton onClick={props.changeModalPicLeft} /> : null}
         {/*Photo:*/}
         <StyledPhoto src={props.photos[props.currentPic].url} alt={`styledPhoto${props.currentPic}`} />
         {/*conditional rendering for right button */}
-        {rightButtonTrue ? <button onClick={props.changeModalPicRight}>Right</button> : null}
+        {rightButtonTrue ? <RightButton onClick={props.changeModalPicRight} /> : null}
       </div>
       <div>
         {/*div for the text for each photo*/}
@@ -93,9 +92,6 @@ const Carousel = (props) => {
 };
 
 export default Carousel;
-
-
-
 
 
 

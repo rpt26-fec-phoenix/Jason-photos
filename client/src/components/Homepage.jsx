@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
+//import ShowAllPhotosIcon icon
+import ShowAllPhotosIcon from './ShowAllPhotosIcon.jsx';
+
 const PrimaryPhoto = styled.img`
   margin-left: auto;
   margin-right: auto;
@@ -88,8 +91,10 @@ const Homepage = (props) => {
               () => {props.changeView();
                 props.changeModalPicFromHomepage(4);
               }
-              }></SmallerPhoto>
+              }>
+              </SmallerPhoto>
           </span>
+          <ShowAllPhotosIcon />
         </div>
       </div>
     </Wrapper>
