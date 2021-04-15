@@ -1,8 +1,8 @@
 import React from 'react';
 
-const LeftButton = () => (
+const LeftButton = ({onClick}) => (
 
-  <button aria-label="Previous" type="button">
+  <button aria-label="Previous" type="button" onClick={onClick}>
     <span >
       <svg
         viewBox="0 0 32 32"

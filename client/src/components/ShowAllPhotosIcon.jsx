@@ -30,7 +30,7 @@ const ShowAllPhotosIcon = () => (
         <circle cx="15.5" cy="15.5" r="1.5">
         </circle>
       </svg>
-      <div class="_pog3hg">Show all photos</div>
+      <div>Show all photos</div>
     </div>
   </button>
 

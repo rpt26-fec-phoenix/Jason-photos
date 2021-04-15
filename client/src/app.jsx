@@ -168,7 +168,6 @@ class App extends React.Component {
   render() {
     return (
       <div className='main'>
-        ScamBnb
         {/* if the view is Homepage, then return the Homepage view */}
         {this.state.view === 'Homepage' ?
           <Homepage photos={this.state.photos} changeView={this.changeView} changeModalPicFromHomepage={this.changeModalPicFromHomepage}/> :

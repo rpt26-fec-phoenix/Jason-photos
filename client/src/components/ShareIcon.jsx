@@ -8,7 +8,7 @@ const ShareIcon = () => (
     aria-hidden="true"
     role="presentation"
     focusable="false"
-    style={{ display: "block", fill: "none", height: "16px", width: "16px", stroke: "currentcolor", overflow: "visible"
+    style={{ display: "block", fill: "none", height: "16px", width: "16px", stroke: "currentcolor", overflow: "visible", color: "white"
   }}>
   <g fill="none">
     <path d="M27 18v9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-9">

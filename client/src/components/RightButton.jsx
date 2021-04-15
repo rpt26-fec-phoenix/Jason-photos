@@ -1,8 +1,8 @@
 import React from 'react';
 
-const RightButton = () => (
+const RightButton = ({onClick}) => (
 
-  <button aria-label="Next" type="button">
+  <button aria-label="Next" type="button" onClick={onClick}>
     <span>
       <svg
         viewBox="0 0 32 32"

@@ -18,11 +18,11 @@ import RightButton from './RightButton.jsx';
 
 //create wrapper div
 const Wrapper = styled.div`
-  background: black;
-  background-size: 100%;
+  position: fixed;
+  z-index: -1;
+  background-color: black;
   height: 100%;
   width: 100%;
-  // font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
 `;
 
 //create styled component for photo
@@ -35,16 +35,19 @@ const StyledPhoto = styled.img`
   left: 50%;
   width: 50%;
   transform: translate(-50%, -50%);
-  max-width: 500 px;
-  max-height: 400px;
-  padding: 4px;
+  max-width: 500px;
+  max-height: 800px;
+  border: 2px solid black;
   overflow: hidden;
 `;
 
 //create styled component for picture text
 const PicText = styled.p`
-  color: black;
+  color: white;
   text-align: center;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+  font-weight: 400;
+  font-size: 16px;
 `;
 
 const Carousel = (props) => {
@@ -70,18 +73,17 @@ const Carousel = (props) => {
       <div>
         <span>
           <button onClick={props.changeView}> <ExitIcon /> Close </button>
+          <PicText> {props.currentPic + 1} / {props.photos.length} </PicText>
           <ShareIcon />
           <SaveIcon />
         </span>
       </div>
-      <div>
         {/*conditional rendering for left button */}
         {leftButtonTrue ? <LeftButton onClick={props.changeModalPicLeft} /> : null}
         {/*Photo:*/}
         <StyledPhoto src={props.photos[props.currentPic].url} alt={`styledPhoto${props.currentPic}`} />
         {/*conditional rendering for right button */}
         {rightButtonTrue ? <RightButton onClick={props.changeModalPicRight} /> : null}
-      </div>
       <div>
         {/*div for the text for each photo*/}
         <PicText>{props.photos[props.currentPic].text}</PicText>
