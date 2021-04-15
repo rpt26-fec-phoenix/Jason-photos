@@ -18,7 +18,7 @@ import RightButton from './RightButton.jsx';
 
 //create wrapper div
 const Wrapper = styled.div`
-  position: fixed;
+  position: absolute;
   z-index: -1;
   background-color: black;
   height: 100%;
@@ -72,22 +72,53 @@ const Carousel = (props) => {
     <Wrapper>
       <div>
         <span>
-          <button onClick={props.changeView}> <ExitIcon /> Close </button>
-          <PicText> {props.currentPic + 1} / {props.photos.length} </PicText>
+          <button onClick={props.changeView}
+            style={{
+              fontFamily: "Circular, -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif",
+              display: "in-line block",
+              position: "absolute",
+              left: "24px",
+              top: "24px",
+              borderRadius: "5px",
+              border: "none",
+              borderWidth: "1px",
+              borderStyle: "solid",
+              borderColor: "rgb(34, 34, 34)",
+              cursor: "pointer",
+              fontSize: "14px",
+              lineHeight: "18px",
+              fontWeight: "600",
+              outline: "none",
+              padding: "7px 15px",
+              background: "rgb(34, 34, 34)",
+              color: "rgb(255, 255, 255)"
+            }}
+          > <ExitIcon /> Close </button>
+          <PicText style={{
+            position: "absolute",
+            top: "16px",
+            left: "50%"
+          }}> {props.currentPic + 1} / {props.photos.length} </PicText>
           <ShareIcon> Share </ShareIcon>
           <SaveIcon> Save </SaveIcon>
         </span>
       </div>
-        {/*conditional rendering for left button */}
-        {leftButtonTrue ? <LeftButton onClick={props.changeModalPicLeft} /> : null}
-        {/*Photo:*/}
-        <StyledPhoto src={props.photos[props.currentPic].url} alt={`styledPhoto${props.currentPic}`} />
-        {/*conditional rendering for right button */}
-        {rightButtonTrue ? <RightButton onClick={props.changeModalPicRight} /> : null}
+      {/*conditional rendering for left button */}
+      {leftButtonTrue ? <LeftButton onClick={props.changeModalPicLeft} /> : null}
+      {/*Photo:*/}
+      <StyledPhoto src={props.photos[props.currentPic].url} alt={`styledPhoto${props.currentPic}`} />
+      {/*conditional rendering for right button */}
+      {rightButtonTrue ? <RightButton onClick={props.changeModalPicRight} /> : null}
       <div>
       </div>
-        {/*div for the text for each photo*/}
-        <PicText>{props.photos[props.currentPic].text}</PicText>
+      {/*div for the text for each photo*/}
+      <div>
+      <PicText style={{
+            position: "absolute",
+            top: "90%",
+            left: "35%"
+          }}>{props.photos[props.currentPic].text}</PicText>
+      </div>
     </Wrapper>
   );
 };

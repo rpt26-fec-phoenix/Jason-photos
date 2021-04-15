@@ -11,7 +11,7 @@ const RightButton = ({onClick}) => (
         role="presentation"
         focusable="false"
         style={{
-          display: "block", fill: "none", height: "12px", width: "12px", stroke: "currentcolor", strokeWidth: "5.33333", overflow: "visible"
+          display: "block", fill: "none", height: "12px", width: "12px", stroke: "currentcolor", strokeWidth: "5.33333", overflow: "visible", position: "absolute", top: "50%", right: "0%"
         }}>
         <g fill="none">
           <path d="m12 4 11.2928932 11.2928932c.3905243.3905243.3905243 1.0236893 0 1.4142136l-11.2928932 11.2928932">

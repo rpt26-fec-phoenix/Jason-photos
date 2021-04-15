@@ -94,7 +94,7 @@ const Homepage = (props) => {
               }>
               </SmallerPhoto>
           </span>
-          <ShowAllPhotosIcon />
+          <ShowAllPhotosIcon/>
         </div>
       </div>
     </Wrapper>
