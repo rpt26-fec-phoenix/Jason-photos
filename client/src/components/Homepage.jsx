@@ -80,7 +80,7 @@ const Homepage = (props) => {
               }></SmallerPhoto>
           </span>
         </div>
-        <div>
+        <div style={{position: "absolute"}}>
           <span>
             <SmallerPhoto src={props.photos[3].url} alt={'small photo3'} onClick={
               () => {props.changeView();

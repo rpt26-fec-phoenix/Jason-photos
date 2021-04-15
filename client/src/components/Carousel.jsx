@@ -20,7 +20,7 @@ import RightButton from './RightButton.jsx';
 const Wrapper = styled.div`
   position: fixed;
   z-index: -1;
-  // background-color: black;
+  background-color: black;
   height: 100%;
   width: 100%;
 `;
@@ -38,7 +38,7 @@ const StyledPhoto = styled.img`
   max-width: 500px;
   max-height: 800px;
   border: 2px solid black;
-  overflow: hidden;
+  object-fit: contain;
 `;
 
 //create styled component for picture text
@@ -74,8 +74,8 @@ const Carousel = (props) => {
         <span>
           <button onClick={props.changeView}> <ExitIcon /> Close </button>
           <PicText> {props.currentPic + 1} / {props.photos.length} </PicText>
-          <ShareIcon />
-          <SaveIcon />
+          <ShareIcon> Share </ShareIcon>
+          <SaveIcon> Save </SaveIcon>
         </span>
       </div>
         {/*conditional rendering for left button */}
