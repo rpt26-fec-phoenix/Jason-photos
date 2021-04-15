@@ -67,10 +67,20 @@ class App extends React.Component {
           __v: 0,
           _id: "604b1ee8c13b395add2333e3"
         }
-      ]
+      ],
+      modalCurrentPhoto: 0
     };
     //bind the changeView function to this context
     this.changeView = this.changeView.bind(this);
+
+    //bind the changeModalPic function to this context
+    this.changeModalPicFromHomepage = this.changeModalPicFromHomepage.bind(this);
+
+    //bind left click function to this context
+    this.changeModalPicLeft = this.changeModalPicLeft.bind(this);
+
+    //bind right click function to this context
+    this.changeModalPicRight = this.changeModalPicRight.bind(this);
   }
 
   //as soon as the component mounts, call the getPhotos function
@@ -123,14 +133,46 @@ class App extends React.Component {
   };
 
 
+  //function to change the current pic in the modal from homepage
+  changeModalPicFromHomepage(clickedPhoto) {
+    console.log('Target', event);
+    console.log('changing pic', clickedPhoto);
+    //set the state of the current photo to the photo that was clicked
+    this.setState({
+      modalCurrentPhoto: clickedPhoto
+    });
+  }
+
+  //function to change the current pic in modal from LEFT button
+  changeModalPicLeft() {
+    //increment the var in the state by one
+    var newPhoto = this.state.modalCurrentPhoto - 1;
+    //set the state of the current photo by one
+    this.setState({
+      modalCurrentPhoto: newPhoto
+    });
+  }
+
+  //function to change the current pic in modal from RIGHT button
+  changeModalPicRight() {
+    //increment the var in the state by one
+    var newPhoto = this.state.modalCurrentPhoto + 1;
+    //set the state of the current photo by one
+    this.setState({
+      modalCurrentPhoto: newPhoto
+    });
+  }
+
+
+
   render() {
     return (
       <div className='main'>
         {/* if the view is Homepage, then return the Homepage view */}
         {this.state.view === 'Homepage' ?
-          <Homepage photos={this.state.photos} changeView={this.changeView}/> :
+          <Homepage photos={this.state.photos} changeView={this.changeView} changeModalPicFromHomepage={this.changeModalPicFromHomepage}/> :
           // otherwise, return the Modal view
-          <Carousel photos={this.state.photos} changeView={this.changeView}/>
+          <Carousel photos={this.state.photos} changeView={this.changeView} changeModalPicLeft={this.changeModalPicLeft} changeModalPicRight={this.changeModalPicRight} currentPic={this.state.modalCurrentPhoto}/>
         }
       </div>
     )
