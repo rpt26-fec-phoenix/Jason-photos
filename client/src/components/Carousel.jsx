@@ -20,7 +20,7 @@ import RightButton from './RightButton.jsx';
 const Wrapper = styled.div`
   position: fixed;
   z-index: -1;
-  background-color: black;
+  // background-color: black;
   height: 100%;
   width: 100%;
 `;
@@ -85,10 +85,9 @@ const Carousel = (props) => {
         {/*conditional rendering for right button */}
         {rightButtonTrue ? <RightButton onClick={props.changeModalPicRight} /> : null}
       <div>
+      </div>
         {/*div for the text for each photo*/}
         <PicText>{props.photos[props.currentPic].text}</PicText>
-      </div>
-
     </Wrapper>
   );
 };
