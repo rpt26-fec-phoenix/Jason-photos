@@ -7,7 +7,8 @@ const LeftButton = ({onClick}) => (
     top: "50%",
     left: "15px",
     borderRadius: "100%",
-    backgroundColor: "rgb(169,169,169)"
+    backgroundColor: "rgb(169,169,169)",
+    outline: "none"
   }}>
     <span >
       <svg

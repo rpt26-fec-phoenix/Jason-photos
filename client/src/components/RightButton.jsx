@@ -7,7 +7,8 @@ const RightButton = ({onClick}) => (
     top: "50%",
     right: "15px",
     borderRadius: "50%",
-    backgroundColor: "rgb(169,169,169)"
+    backgroundColor: "rgb(169,169,169)",
+    outline: "none"
   }}>
     <span>
       <svg
