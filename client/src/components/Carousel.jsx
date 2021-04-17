@@ -70,7 +70,9 @@ const Carousel = (props) => {
   }
   return (
     <Wrapper>
-      <div>
+      <div style={{
+            position: "relative",
+          }}>
         <span>
           <button onClick={props.changeView}
             style={{
@@ -99,8 +101,8 @@ const Carousel = (props) => {
             top: "16px",
             left: "50%"
           }}> {props.currentPic + 1} / {props.photos.length} </PicText>
-          <ShareIcon> Share </ShareIcon>
-          <SaveIcon> Save </SaveIcon>
+          <ShareIcon />
+          <SaveIcon />
         </span>
       </div>
       {/*conditional rendering for left button */}
@@ -127,14 +129,3 @@ export default Carousel;
 
 
 
-
-
-// {/* iterate over the props passed in and create a photo for each index */}
-// {props.photos.map((currPhoto) => {
-//   //create a styled photo for each one
-//   return (
-//     <span>
-//       <StyledPhoto src={currPhoto.url} alt={`styledPhoto${currPhoto}`} />
-//     </span>
-//   )
-// })}

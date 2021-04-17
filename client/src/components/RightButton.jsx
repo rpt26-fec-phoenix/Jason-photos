@@ -2,7 +2,14 @@ import React from 'react';
 
 const RightButton = ({onClick}) => (
 
-  <button aria-label="Next" type="button" onClick={onClick}>
+  <button aria-label="Next" type="button" onClick={onClick} style={{
+    position: "absolute",
+    top: "50%",
+    right: "15px",
+    borderRadius: "50%",
+    backgroundColor: "rgb(169,169,169)",
+    outline: "none"
+  }}>
     <span>
       <svg
         viewBox="0 0 32 32"
@@ -11,7 +18,7 @@ const RightButton = ({onClick}) => (
         role="presentation"
         focusable="false"
         style={{
-          display: "block", fill: "none", height: "12px", width: "12px", stroke: "currentcolor", strokeWidth: "5.33333", overflow: "visible", position: "absolute", top: "50%", right: "0%"
+          display: "block", fill: "none", height: "12px", width: "12px", stroke: "currentcolor", strokeWidth: "5.33333", overflow: "visible", padding: "20px"
         }}>
         <g fill="none">
           <path d="m12 4 11.2928932 11.2928932c.3905243.3905243.3905243 1.0236893 0 1.4142136l-11.2928932 11.2928932">
